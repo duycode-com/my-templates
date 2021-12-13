@@ -63,9 +63,6 @@ tree-menu {
 	}
 	tree-group {
 		display: block;
-		height: 41px;
-		overflow: hidden;
-		transition: height 0.2s ease-in;
 		& > tree-group-title {
 			@include tree-item-style;
 			&::after {
@@ -81,9 +78,10 @@ tree-menu {
 		}
 		& > tree-group-children {
 			display: block;
+			max-height: 0;
 			transform: scaleY(0);
 			transform-origin: top;
-			transition: transform 0.2s ease-in;
+			transition: all .3s ease;
 		}
 		&.expand {
 			& > tree-group-title {
@@ -96,6 +94,7 @@ tree-menu {
 				}
 			}
 			& > tree-group-children {
+				max-height: 1000px;
 				transform: scaleY(1);
 			}
 		}

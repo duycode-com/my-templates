@@ -27,7 +27,6 @@ class TreeMenuElement {
 		this.treeMenu.querySelectorAll('tree-group').forEach(item => {
 			if (item.classList.contains('expand')) {
 				item.classList.remove('expand')
-				// this.fixHeightTreeGroupAll(item)
 			}
 		})
 	}
@@ -48,7 +47,6 @@ class TreeMenuElement {
 		element.querySelectorAll('tree-group').forEach(item => {
 			item.classList.remove('expand')
 		})
-		element.classList.remove('expand')
 	}
 	activeItem(data) {
 		this.clearAllActiveExpand()
@@ -59,28 +57,10 @@ class TreeMenuElement {
 	activeGroup(treeGroup) {
 		if (treeGroup.classList.contains('expand')) {
 			this.closeExpandGroupAndChildrenByElement(treeGroup)
+            treeGroup.classList.remove('expand')
 		} else {
 			this.clearAllExpandGroup()
 			this.expandGroupAndParentByElement(treeGroup)
-		}
-		this.fixHeightTreeGroupAll(treeGroup)
-	}
-	fixHeightTreeGroupAll(element) {
-		let treeGroup = element
-		while (treeGroup) {
-			if (treeGroup.nodeName === 'TREE-GROUP') {
-				this.fixHeightTreeGroupForAnimation(treeGroup)
-			}
-			treeGroup = treeGroup.parentElement
-		}
-	}
-	fixHeightTreeGroupForAnimation(treeGroup) {
-		const treeGroupChildren = treeGroup.querySelector('tree-group-children')
-		const treeGroupTitle = treeGroup.querySelector('tree-group-title')
-		if (treeGroup.classList.contains('expand')) {
-			treeGroup.style.height = treeGroupTitle.clientHeight + treeGroupChildren.clientHeight + 'px'
-		} else {
-			treeGroup.style.height = treeGroupTitle.clientHeight + 'px'
 		}
 	}
 }

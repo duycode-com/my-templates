@@ -61,9 +61,6 @@ tree-menu tree-item.active .material-icons {
 }
 tree-menu tree-group {
   display: block;
-  height: 41px;
-  overflow: hidden;
-  transition: height 0.2s ease-in;
 }
 tree-menu tree-group > tree-group-title {
   display: flex;
@@ -106,9 +103,10 @@ tree-menu tree-group > tree-group-title::after {
 }
 tree-menu tree-group > tree-group-children {
   display: block;
+  max-height: 0;
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform 0.2s ease-in;
+  transition: all 0.3s ease;
 }
 tree-menu tree-group.expand > tree-group-title {
   color: var(--color-active);
@@ -120,6 +118,7 @@ tree-menu tree-group.expand > tree-group-title::after {
   transform: translateY(-50%) rotate(180deg);
 }
 tree-menu tree-group.expand > tree-group-children {
+  max-height: 1000px;
   transform: scaleY(1);
 }
 tree-menu > tree-item {
