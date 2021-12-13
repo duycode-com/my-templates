@@ -1,16 +1,27 @@
 @charset "UTF-8";
 tree-menu {
+  --tree-menu-width: 260px;
+  --font-size: 16px;
   --color-active: #007bff;
   --color-black: #333;
   --color-black-hover: #000;
   --item-padding: 10px 0;
   --item-background-color-hover: #ebebeb;
+  --scroll-bar-color: rgb(52, 58, 64, 0.2);
   color: var(--color-black);
-  font-size: 16px;
+  font-size: var(--font-size);
   font-family: "Segoe UI";
-  width: 260px;
+  width: var(--tree-menu-width);
+  height: 100vh;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
+}
+tree-menu::-webkit-scrollbar {
+  width: 5px;
+}
+tree-menu::-webkit-scrollbar-thumb {
+  background: var(--scroll-bar-color);
 }
 tree-menu tree-label {
   opacity: 0.7;
@@ -92,17 +103,15 @@ tree-menu tree-group > tree-group-title::after {
 }
 tree-menu tree-group > tree-group-children {
   display: block;
-  height: 0;
   transform: scaleY(0);
   transform-origin: top;
-  transition: height 0.2s ease-in, transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
 }
 tree-menu tree-group.expand > tree-group-title::after {
   transform: translateY(-50%) rotate(180deg);
 }
 tree-menu tree-group.expand > tree-group-children {
   display: block;
-  height: 200px;
   transform: scaleY(1);
 }
 tree-menu > tree-item {
