@@ -2,7 +2,7 @@ tree-menu {
 	--tree-menu-width: 260px;
 	--font-size: 16px;
 	--color-active: #007bff;
-	--color-black: #333;
+	--color-black: #111;
 	--color-black-hover: #000;
 	--item-padding: 10px 0;
 	--item-background-color-hover: #ebebeb;
@@ -63,6 +63,9 @@ tree-menu {
 	}
 	tree-group {
 		display: block;
+		height: 41px;
+		overflow: hidden;
+		transition: height 0.2s ease-in;
 		& > tree-group-title {
 			@include tree-item-style;
 			&::after {
@@ -84,12 +87,15 @@ tree-menu {
 		}
 		&.expand {
 			& > tree-group-title {
+				color: var(--color-active);
+				.material-icons {
+					opacity: 1;
+				}
 				&::after {
 					transform: translateY(-50%) rotate(180deg);
 				}
 			}
 			& > tree-group-children {
-				display: block;
 				transform: scaleY(1);
 			}
 		}

@@ -3,7 +3,7 @@ tree-menu {
   --tree-menu-width: 260px;
   --font-size: 16px;
   --color-active: #007bff;
-  --color-black: #333;
+  --color-black: #111;
   --color-black-hover: #000;
   --item-padding: 10px 0;
   --item-background-color-hover: #ebebeb;
@@ -61,6 +61,9 @@ tree-menu tree-item.active .material-icons {
 }
 tree-menu tree-group {
   display: block;
+  height: 41px;
+  overflow: hidden;
+  transition: height 0.2s ease-in;
 }
 tree-menu tree-group > tree-group-title {
   display: flex;
@@ -107,11 +110,16 @@ tree-menu tree-group > tree-group-children {
   transform-origin: top;
   transition: transform 0.2s ease-in;
 }
+tree-menu tree-group.expand > tree-group-title {
+  color: var(--color-active);
+}
+tree-menu tree-group.expand > tree-group-title .material-icons {
+  opacity: 1;
+}
 tree-menu tree-group.expand > tree-group-title::after {
   transform: translateY(-50%) rotate(180deg);
 }
 tree-menu tree-group.expand > tree-group-children {
-  display: block;
   transform: scaleY(1);
 }
 tree-menu > tree-item {

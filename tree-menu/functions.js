@@ -18,23 +18,24 @@ class TreeMenuElement {
 			}
 		})
 	}
-
-	clearActiveItem() {
+	clearAllActiveItem() {
 		this.treeMenu.querySelectorAll('tree-item').forEach(element => {
 			element.classList.remove('active')
 		})
 	}
-	clearExpandGroup() {
+	clearAllExpandGroup() {
 		this.treeMenu.querySelectorAll('tree-group').forEach(item => {
-			item.classList.remove('expand')
+			if (item.classList.contains('expand')) {
+				item.classList.remove('expand')
+				// this.fixHeightTreeGroupAll(item)
+			}
 		})
 	}
-	clearActiveExpandAll() {
-		this.clearActiveItem()
-		this.clearExpandGroup()
+	clearAllActiveExpand() {
+		this.clearAllActiveItem()
+		this.clearAllExpandGroup()
 	}
-
-	expandGroupByElement(element) {
+	expandGroupAndParentByElement(element) {
 		let treeGroup = element
 		while (treeGroup) {
 			if (treeGroup.nodeName === 'TREE-GROUP') {
@@ -43,23 +44,44 @@ class TreeMenuElement {
 			treeGroup = treeGroup.parentElement
 		}
 	}
+	closeExpandGroupAndChildrenByElement(element) {
+		element.querySelectorAll('tree-group').forEach(item => {
+			item.classList.remove('expand')
+		})
+		element.classList.remove('expand')
+	}
 	activeItem(data) {
-		this.clearActiveExpandAll()
+		this.clearAllActiveExpand()
 		const treeItem = this.treeMenu.querySelector(`tree-item[data-tree-item='${data}']`)
-		this.expandGroupByElement(treeItem)
+		this.expandGroupAndParentByElement(treeItem)
 		treeItem.classList.add('active')
 	}
-	activeGroup(element) {
-		const treeGroupChildren = element.querySelector('tree-group-children')
-		if (element.classList.contains('expand')) {
-			element.classList.remove('expand')
-			// element.style.height = '100px'
-			return
+	activeGroup(treeGroup) {
+		if (treeGroup.classList.contains('expand')) {
+			this.closeExpandGroupAndChildrenByElement(treeGroup)
+		} else {
+			this.clearAllExpandGroup()
+			this.expandGroupAndParentByElement(treeGroup)
 		}
-		this.clearExpandGroup()
-		this.expandGroupByElement(treeGroupChildren)
-		// element.style.height = '300px'
-		// console.log(element.style.height);
+		this.fixHeightTreeGroupAll(treeGroup)
+	}
+	fixHeightTreeGroupAll(element) {
+		let treeGroup = element
+		while (treeGroup) {
+			if (treeGroup.nodeName === 'TREE-GROUP') {
+				this.fixHeightTreeGroupForAnimation(treeGroup)
+			}
+			treeGroup = treeGroup.parentElement
+		}
+	}
+	fixHeightTreeGroupForAnimation(treeGroup) {
+		const treeGroupChildren = treeGroup.querySelector('tree-group-children')
+		const treeGroupTitle = treeGroup.querySelector('tree-group-title')
+		if (treeGroup.classList.contains('expand')) {
+			treeGroup.style.height = treeGroupTitle.clientHeight + treeGroupChildren.clientHeight + 'px'
+		} else {
+			treeGroup.style.height = treeGroupTitle.clientHeight + 'px'
+		}
 	}
 }
 
