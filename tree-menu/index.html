@@ -12,74 +12,86 @@
 </head>
 
 <body>
-    <tree-menu>
-        <menu-item>
-            <menu-item-icon> <span class="material-icons">layers</span> </menu-item-icon>
-            Dashboard
-        </menu-item>
-        <menu-label>Pages</menu-label>
-        <menu-item>Item 2</menu-item>
-        <menu-group class="active">
-            <menu-item>
-                <menu-item-icon> <span class="material-icons">dashboard</span> </menu-item-icon>
-                <span> Application</span>
-            </menu-item>
-            <menu-group-children>
-                <menu-item class="active">Item 3</menu-item>
-                <menu-item>Item 4</menu-item>
-            </menu-group-children>
-        </menu-group>
-        <menu-group>
-            <menu-item>
+    <tree-menu id="tree-menu">
+        <tree-item> <span class="material-icons">layers</span> Dashboard</tree-item>
+        <tree-label>Pages</tree-label>
+        <tree-group>
+            <tree-group-title><span class="material-icons">dashboard</span> </tree-item-icon>Application
+            </tree-group-title>
+            <tree-group-children>
+                <tree-item data-tree-item="chat">Chat</tree-item>
+                <tree-item data-tree-item="inbox">Inbox</tree-item>
+            </tree-group-children>
+        </tree-group>
+        <tree-group>
+            <tree-group-title><span class="material-icons">contact_page</span> Pages</tree-group-title>
+            <tree-group-children>
+                <tree-item data-tree-item="sign-in">Sign In</tree-item>
+                <tree-item data-tree-item="sign-up">Sign Up</tree-item>
+            </tree-group-children>
+        </tree-group>
+        <tree-label>Tools & components</tree-label>
+        <tree-group>
+            <tree-group-title>
                 <span class="material-icons">grid_on</span>
                 <span> UI Element </span>
-            </menu-item>
-            <menu-group-children>
-                <menu-item>
-                    <span> Item 5 </span>
-                </menu-item>
-                <menu-item>Item 6</menu-item>
-            </menu-group-children>
-        </menu-group>
-        <menu-group>
-            <menu-item>
-                <menu-item-icon> <i class="fas fa-clock"></i> </menu-item-icon>
-                <span> Group C </span>
-            </menu-item>
-            <menu-group-children>
-                <menu-item>Item 7</menu-item>
-                <menu-item>Item 8</menu-item>
-            </menu-group-children>
-        </menu-group>
-        <menu-item>
-            <menu-item-icon> <i class="far fa-address-card"></i> </menu-item-icon>
-            <span> Card</span>
-
-        </menu-item>
-        <menu-item>
-            <menu-item-icon> <i class="fab fa-accusoft"></i> </menu-item-icon>
-            <span> Accusoft</span>
-
-        </menu-item>
-        <menu-group>
-            <menu-item>
-                <menu-item-icon> <i class="fas fa-clock"></i> </menu-item-icon>
-                <span> Group C </span>
-            </menu-item>
-            <menu-group-children>
-                <menu-item>Item 7</menu-item>
-                <menu-group>
-                    <menu-item>
-                        <menu-item-icon> <i class="fas fa-clock"></i> </menu-item-icon>
-                        <span> Group C.1 </span>
-                    </menu-item>
-                    <menu-group-children>
-                        <menu-item>Item 9</menu-item>
-                        <menu-item>Item 10</menu-item>
-                    </menu-group-children>
-                </menu-group>
-            </menu-group-children>
-        </menu-group>
+            </tree-group-title>
+            <tree-group-children>
+                <tree-item data-tree-item="toasts"> Toasts </tree-item>
+                <tree-item data-tree-item="buttons"> Buttons </tree-item>
+            </tree-group-children>
+        </tree-group>
+        <tree-group>
+            <tree-group-title>
+                <span class="material-icons">fact_check</span>
+                <span> Form Plugins </span>
+            </tree-group-title>
+            <tree-group-children>
+                <tree-item data-tree-item="editor"> Editor </tree-item>
+                <tree-item data-tree-item="validation"> Validation </tree-item>
+            </tree-group-children>
+        </tree-group>
+        <tree-item class="active" data-tree-item="tables"> <span class="material-icons">table_chart</span> Tables
+        </tree-item>
+        <tree-item data-tree-item="chart"><span class="material-icons">pie_chart</span><span> Charts </span>
+        </tree-item>
+        <tree-item data-tree-item="notiications"> <span class="material-icons">alarm</span>Notifications</tree-item>
+        <tree-group>
+            <tree-group-title>
+                <span class="material-icons">share</span>
+                <span> Multi Level </span>
+            </tree-group-title>
+            <tree-group-children>
+                <tree-group>
+                    <tree-group-title>Level 1.1 </tree-group-title>
+                    <tree-group-children>
+                        <tree-group>
+                            <tree-group-title>Level 1.1.1</tree-group-title>
+                            <tree-group-children>
+                                <tree-group>
+                                    <tree-group-title>Level 1.1.1.1</tree-group-title>
+                                    <tree-group-children>
+                                        <tree-group>
+                                            <tree-group-title>Level 1.1.1.1.1</tree-group-title>
+                                            <tree-group-children>
+                                                <tree-item data-tree-item="level-1.1.1.1.1.1"> Level 1.1.1.1.1.1
+                                                </tree-item>
+                                                <tree-item data-tree-item="level-1.1.1.1.1.2"> Level 1.1.1.1.1.2
+                                                </tree-item>
+                                            </tree-group-children>
+                                        </tree-group>
+                                        <tree-item data-tree-item="level-1.1.1.1.2"> Level 1.1.1.1.2 </tree-item>
+                                    </tree-group-children>
+                                </tree-group>
+                                <tree-item data-tree-item="level-1.1.1.2"> Level 1.1.1.2 </tree-item>
+                            </tree-group-children>
+                        </tree-group>
+                        <tree-item data-tree-item="level-1.1.2"> Level 1.1.2 </tree-item>
+                    </tree-group-children>
+                </tree-group>
+                <tree-item data-tree-item="level-1.2"> Level 1.2 </tree-item>
+            </tree-group-children>
+        </tree-group>
     </tree-menu>
     <script src="./functions.js"></script>
 </body>

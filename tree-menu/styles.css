@@ -1,0 +1,143 @@
+@charset "UTF-8";
+tree-menu {
+  --color-active: #007bff;
+  --color-black: #333;
+  --color-black-hover: #000;
+  --item-padding: 10px 0;
+  --item-background-color-hover: #ebebeb;
+  color: var(--color-black);
+  font-size: 16px;
+  font-family: "Segoe UI";
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+tree-menu tree-label {
+  opacity: 0.7;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: var(--item-padding);
+  text-transform: uppercase;
+}
+tree-menu tree-item {
+  display: flex;
+  align-items: center;
+  padding: var(--item-padding);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+}
+tree-menu tree-item .material-icons {
+  margin-right: 10px;
+  font-size: 20px;
+  opacity: 0.2;
+}
+tree-menu tree-item:hover {
+  color: var(--color-black-hover);
+  background-color: var(--item-background-color-hover);
+}
+tree-menu tree-item:hover .material-icons {
+  opacity: 1;
+}
+tree-menu tree-item.active {
+  color: var(--color-active);
+}
+tree-menu tree-item.active .material-icons {
+  opacity: 1;
+}
+tree-menu tree-group {
+  display: block;
+}
+tree-menu tree-group > tree-group-title {
+  display: flex;
+  align-items: center;
+  padding: var(--item-padding);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+}
+tree-menu tree-group > tree-group-title .material-icons {
+  margin-right: 10px;
+  font-size: 20px;
+  opacity: 0.2;
+}
+tree-menu tree-group > tree-group-title:hover {
+  color: var(--color-black-hover);
+  background-color: var(--item-background-color-hover);
+}
+tree-menu tree-group > tree-group-title:hover .material-icons {
+  opacity: 1;
+}
+tree-menu tree-group > tree-group-title.active {
+  color: var(--color-active);
+}
+tree-menu tree-group > tree-group-title.active .material-icons {
+  opacity: 1;
+}
+tree-menu tree-group > tree-group-title::after {
+  font-family: "Material Icons";
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+tree-menu tree-group > tree-group-children {
+  display: block;
+  height: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: height 0.2s ease-in, transform 0.2s ease-in;
+}
+tree-menu tree-group.expand > tree-group-title::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+tree-menu tree-group.expand > tree-group-children {
+  display: block;
+  height: 200px;
+  transform: scaleY(1);
+}
+tree-menu > tree-item {
+  padding-left: 12px;
+}
+tree-menu > tree-group > tree-group-title {
+  padding-left: 12px;
+}
+tree-menu > tree-group > tree-group-children > tree-item {
+  padding-left: 40px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-title {
+  padding-left: 40px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+  padding-left: 60px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+  padding-left: 60px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+  padding-left: 80px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+  padding-left: 80px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+  padding-left: 100px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+  padding-left: 100px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+  padding-left: 120px;
+}
+tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+  padding-left: 120px;
+}/*# sourceMappingURL=styles.css.map */

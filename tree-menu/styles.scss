@@ -1,0 +1,145 @@
+tree-menu {
+	--color-active: #007bff;
+	--color-black: #333;
+	--color-black-hover: #000;
+	--item-padding: 10px 0;
+	--item-background-color-hover: #ebebeb;
+
+	color: var(--color-black);
+	font-size: 16px;
+	font-family: 'Segoe UI';
+	width: 260px;
+	display: flex;
+	flex-direction: column;
+
+	@mixin tree-item-style {
+		display: flex;
+		align-items: center;
+		padding: var(--item-padding);
+		cursor: pointer;
+		user-select: none;
+		position: relative;
+		.material-icons {
+			margin-right: 10px;
+			font-size: 20px;
+			opacity: 0.2;
+		}
+		&:hover {
+			color: var(--color-black-hover);
+			background-color: var(--item-background-color-hover);
+			.material-icons {
+				opacity: 1;
+			}
+		}
+		&.active {
+			color: var(--color-active);
+			.material-icons {
+				opacity: 1;
+			}
+		}
+	}
+
+	tree-label {
+		opacity: 0.7;
+		font-size: 0.7rem;
+		font-weight: bold;
+		padding: var(--item-padding);
+		text-transform: uppercase;
+	}
+	tree-item {
+		@include tree-item-style;
+	}
+	tree-group {
+		display: block;
+		& > tree-group-title {
+			@include tree-item-style;
+			&::after {
+				font-family: 'Material Icons';
+				content: '\e313';
+				display: inline-block;
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+				transition: transform 0.2s;
+			}
+		}
+		& > tree-group-children {
+			display: block;
+			height: 0;
+			transform: scaleY(0);
+			transform-origin: top;
+			transition: height 0.2s ease-in, transform 0.2s ease-in;
+		}
+		&.expand {
+			& > tree-group-title {
+				&::after {
+					transform: translateY(-50%) rotate(180deg);
+				}
+			}
+			& > tree-group-children {
+				display: block;
+				height: 200px;
+				transform: scaleY(1);
+			}
+		}
+	}
+	& > tree-item {
+		padding-left: 12px; // Thụt dòng root
+	}
+	& > tree-group {
+		& > tree-group-title {
+			padding-left: 12px; // Thụt dòng root
+		}
+		& > tree-group-children {
+			& > tree-item {
+				padding-left: 40px; // Thụt dòng lv 2
+			}
+			& > tree-group {
+				& > tree-group-title {
+					padding-left: 40px; // Thụt dòng lv 2
+				}
+				& > tree-group-children {
+					& > tree-item {
+						padding-left: 60px; // Thụt dòng lv 3
+					}
+					& > tree-group {
+						& > tree-group-title {
+							padding-left: 60px; // Thụt dòng lv 3
+						}
+						& > tree-group-children {
+							& > tree-item {
+								padding-left: 80px; // Thụt dòng lv 4
+							}
+							& > tree-group {
+								& > tree-group-title {
+									padding-left: 80px; // Thụt dòng lv 4
+								}
+								& > tree-group-children {
+									& > tree-item {
+										padding-left: 100px; // Thụt dòng lv 5
+									}
+									& > tree-group {
+										& > tree-group-title {
+											padding-left: 100px; // Thụt dòng lv 5
+										}
+										& > tree-group-children {
+											& > tree-item {
+												padding-left: 120px; // Thụt dòng lv 6
+											}
+											& > tree-group {
+												& > tree-group-title {
+													padding-left: 120px; // Thụt dòng lv 6
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
