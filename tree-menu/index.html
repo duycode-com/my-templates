@@ -11,88 +11,92 @@
 </head>
 
 <body>
-    <tree-menu id="tree-menu">
-        <tree-item> <span class="material-icons">layers</span> Dashboard</tree-item>
-        <tree-label>Pages</tree-label>
-        <tree-group>
-            <tree-group-title><span class="material-icons">dashboard</span> </tree-item-icon>Application
-            </tree-group-title>
-            <tree-group-children>
-                <tree-item data-tree-item="chat">Chat</tree-item>
-                <tree-item data-tree-item="inbox">Inbox</tree-item>
-            </tree-group-children>
-        </tree-group>
-        <tree-group>
-            <tree-group-title><span class="material-icons">contact_page</span> Pages</tree-group-title>
-            <tree-group-children>
-                <tree-item data-tree-item="sign-in">Sign In</tree-item>
-                <tree-item data-tree-item="sign-up">Sign Up</tree-item>
-            </tree-group-children>
-        </tree-group>
-        <tree-label>Tools & components</tree-label>
-        <tree-group>
-            <tree-group-title>
+    <div class="tree-menu" id="tree-example">
+        <div class="tree-item"> <span class="material-icons">layers</span> Dashboard</div>
+        <div class="tree-label">Pages</div>
+        <div class="tree-group">
+            <div class="tree-group-title"><span class="material-icons">dashboard</span> </tree-item-icon>Application
+            </div>
+            <div class="tree-group-children">
+                <div class="tree-item" data-tree-item="chat">Chat</div>
+                <div class="tree-item" data-tree-item="inbox">Inbox</div>
+            </div>
+        </div>
+        <div class="tree-group">
+            <div class="tree-group-title"><span class="material-icons">contact_page</span> Pages</div>
+            <div class="tree-group-children">
+                <div class="tree-item" data-tree-item="sign-in">Sign In</div>
+                <div class="tree-item" data-tree-item="sign-up">Sign Up</div>
+            </div>
+        </div>
+        <div class="tree-label">Tools & components</div>
+        <div class="tree-group">
+            <div class="tree-group-title">
                 <span class="material-icons">grid_on</span>
                 <span> UI Element </span>
-            </tree-group-title>
-            <tree-group-children>
-                <tree-item data-tree-item="toasts"> Toasts </tree-item>
-                <tree-item data-tree-item="buttons"> Buttons </tree-item>
-            </tree-group-children>
-        </tree-group>
-        <tree-group>
-            <tree-group-title>
+            </div>
+            <div class="tree-group-children">
+                <div class="tree-item" data-tree-item="toasts"> Toasts </div>
+                <div class="tree-item" data-tree-item="buttons"> Buttons </div>
+            </div>
+        </div>
+        <div class="tree-group">
+            <div class="tree-group-title">
                 <span class="material-icons">fact_check</span>
                 <span> Form Plugins </span>
-            </tree-group-title>
-            <tree-group-children>
-                <tree-item data-tree-item="editor"> Editor </tree-item>
-                <tree-item data-tree-item="validation"> Validation </tree-item>
-            </tree-group-children>
-        </tree-group>
-        <tree-item class="active" data-tree-item="tables"> <span class="material-icons">table_chart</span> Tables
-        </tree-item>
-        <tree-label>Plugins & Addons</tree-label>
-        <tree-item data-tree-item="chart"><span class="material-icons">pie_chart</span><span> Charts </span>
-        </tree-item>
-        <tree-item data-tree-item="notiications"> <span class="material-icons">alarm</span>Notifications</tree-item>
-        <tree-group>
-            <tree-group-title>
+            </div>
+            <div class="tree-group-children">
+                <div class="tree-item" data-tree-item="editor"> Editor </div>
+                <div class="tree-item" data-tree-item="validation"> Validation </div>
+            </div>
+        </div>
+        <div class="tree-item" class="active" data-tree-item="tables"> <span class="material-icons">table_chart</span>
+            Tables
+        </div>
+        <div class="tree-label">Plugins & Addons</div>
+        <div class="tree-item" data-tree-item="chart"><span class="material-icons">pie_chart</span><span> Charts </span>
+        </div>
+        <div class="tree-item" data-tree-item="notiications"> <span class="material-icons">alarm</span>Notifications
+        </div>
+        <div class="tree-group">
+            <div class="tree-group-title">
                 <span class="material-icons">share</span>
                 <span> Multi Level </span>
-            </tree-group-title>
-            <tree-group-children>
-                <tree-group>
-                    <tree-group-title>Level 1.1 </tree-group-title>
-                    <tree-group-children>
-                        <tree-group>
-                            <tree-group-title>Level 1.1.1</tree-group-title>
-                            <tree-group-children>
-                                <tree-group>
-                                    <tree-group-title>Level 1.1.1.1</tree-group-title>
-                                    <tree-group-children>
-                                        <tree-group>
-                                            <tree-group-title>Level 1.1.1.1.1</tree-group-title>
-                                            <tree-group-children>
-                                                <tree-item data-tree-item="level-1.1.1.1.1.1"> Level 1.1.1.1.1.1
-                                                </tree-item>
-                                                <tree-item data-tree-item="level-1.1.1.1.1.2"> Level 1.1.1.1.1.2
-                                                </tree-item>
-                                            </tree-group-children>
-                                        </tree-group>
-                                        <tree-item data-tree-item="level-1.1.1.1.2"> Level 1.1.1.1.2 </tree-item>
-                                    </tree-group-children>
-                                </tree-group>
-                                <tree-item data-tree-item="level-1.1.1.2"> Level 1.1.1.2 </tree-item>
-                            </tree-group-children>
-                        </tree-group>
-                        <tree-item data-tree-item="level-1.1.2"> Level 1.1.2 </tree-item>
-                    </tree-group-children>
-                </tree-group>
-                <tree-item data-tree-item="level-1.2"> Level 1.2 </tree-item>
-            </tree-group-children>
-        </tree-group>
-    </tree-menu>
+            </div>
+            <div class="tree-group-children">
+                <div class="tree-group">
+                    <div class="tree-group-title">Level 1.1 </div>
+                    <div class="tree-group-children">
+                        <div class="tree-group">
+                            <div class="tree-group-title">Level 1.1.1</div>
+                            <div class="tree-group-children">
+                                <div class="tree-group">
+                                    <div class="tree-group-title">Level 1.1.1.1</div>
+                                    <div class="tree-group-children">
+                                        <div class="tree-group">
+                                            <div class="tree-group-title">Level 1.1.1.1.1</div>
+                                            <div class="tree-group-children">
+                                                <div class="tree-item" data-tree-item="level-1.1.1.1.1.1"> Level
+                                                    1.1.1.1.1.1
+                                                </div>
+                                                <div class="tree-item" data-tree-item="level-1.1.1.1.1.2"> Level
+                                                    1.1.1.1.1.2
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tree-item" data-tree-item="level-1.1.1.1.2"> Level 1.1.1.1.2 </div>
+                                    </div>
+                                </div>
+                                <div class="tree-item" data-tree-item="level-1.1.1.2"> Level 1.1.1.2 </div>
+                            </div>
+                        </div>
+                        <div class="tree-item" data-tree-item="level-1.1.2"> Level 1.1.2 </div>
+                    </div>
+                </div>
+                <div class="tree-item" data-tree-item="level-1.2"> Level 1.2 </div>
+            </div>
+        </div>
+    </div>
     <script src="./functions.js"></script>
 </body>
 

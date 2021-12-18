@@ -1,4 +1,4 @@
-tree-menu {
+.tree-menu {
 	--tree-menu-width: 260px;
 	--font-size: 16px;
 	--color-active: #007bff;
@@ -51,19 +51,18 @@ tree-menu {
 		}
 	}
 
-	tree-label {
+	.tree-label {
 		opacity: 0.7;
 		font-size: 0.7rem;
 		font-weight: bold;
 		padding: var(--item-padding);
 		text-transform: uppercase;
 	}
-	tree-item {
+	.tree-item {
 		@include tree-item-style;
 	}
-	tree-group {
-		display: block;
-		& > tree-group-title {
+	.tree-group {
+		& > .tree-group-title {
 			@include tree-item-style;
 			&::after {
 				font-family: 'Material Icons';
@@ -76,15 +75,15 @@ tree-menu {
 				transition: transform 0.2s;
 			}
 		}
-		& > tree-group-children {
-			display: block;
+		& > .tree-group-children {
 			max-height: 0;
-			transform: scaleY(0);
-			transform-origin: top;
-			transition: all .3s ease;
+			overflow: hidden;
+			// transform-origin: top;
+			// transform: scaleY(0);
+			transition: max-height 0.25s ease-out;
 		}
 		&.expand {
-			& > tree-group-title {
+			& > .tree-group-title {
 				color: var(--color-active);
 				.material-icons {
 					opacity: 1;
@@ -93,57 +92,58 @@ tree-menu {
 					transform: translateY(-50%) rotate(180deg);
 				}
 			}
-			& > tree-group-children {
-				max-height: 1000px;
-				transform: scaleY(1);
+			& > .tree-group-children {
+				// transform: scaleY(1);
+				max-height: 300px;
+				transition: max-height 0.35s ease-in;
 			}
 		}
 	}
-	& > tree-item {
+	& > .tree-item {
 		padding-left: 12px; // Thụt dòng root
 	}
-	& > tree-group {
-		& > tree-group-title {
+	& > .tree-group {
+		& > .tree-group-title {
 			padding-left: 12px; // Thụt dòng root
 		}
-		& > tree-group-children {
-			& > tree-item {
+		& > .tree-group-children {
+			& > .tree-item {
 				padding-left: 40px; // Thụt dòng lv 2
 			}
-			& > tree-group {
-				& > tree-group-title {
+			& > .tree-group {
+				& > .tree-group-title {
 					padding-left: 40px; // Thụt dòng lv 2
 				}
-				& > tree-group-children {
-					& > tree-item {
+				& > .tree-group-children {
+					& > .tree-item {
 						padding-left: 60px; // Thụt dòng lv 3
 					}
-					& > tree-group {
-						& > tree-group-title {
+					& > .tree-group {
+						& > .tree-group-title {
 							padding-left: 60px; // Thụt dòng lv 3
 						}
-						& > tree-group-children {
-							& > tree-item {
+						& > .tree-group-children {
+							& > .tree-item {
 								padding-left: 80px; // Thụt dòng lv 4
 							}
-							& > tree-group {
-								& > tree-group-title {
+							& > .tree-group {
+								& > .tree-group-title {
 									padding-left: 80px; // Thụt dòng lv 4
 								}
-								& > tree-group-children {
-									& > tree-item {
+								& > .tree-group-children {
+									& > .tree-item {
 										padding-left: 100px; // Thụt dòng lv 5
 									}
-									& > tree-group {
-										& > tree-group-title {
+									& > .tree-group {
+										& > .tree-group-title {
 											padding-left: 100px; // Thụt dòng lv 5
 										}
-										& > tree-group-children {
-											& > tree-item {
+										& > .tree-group-children {
+											& > .tree-item {
 												padding-left: 120px; // Thụt dòng lv 6
 											}
-											& > tree-group {
-												& > tree-group-title {
+											& > .tree-group {
+												& > .tree-group-title {
 													padding-left: 120px; // Thụt dòng lv 6
 												}
 											}

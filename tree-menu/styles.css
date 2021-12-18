@@ -1,5 +1,4 @@
-@charset "UTF-8";
-tree-menu {
+.tree-menu {
   --tree-menu-width: 260px;
   --font-size: 16px;
   --color-active: #007bff;
@@ -10,29 +9,42 @@ tree-menu {
   --scroll-bar-color: rgb(52, 58, 64, 0.2);
   color: var(--color-black);
   font-size: var(--font-size);
-  font-family: "Segoe UI";
+  font-family: 'Segoe UI';
   width: var(--tree-menu-width);
   height: 100vh;
   overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-tree-menu::-webkit-scrollbar {
+
+.tree-menu::-webkit-scrollbar {
   width: 5px;
 }
-tree-menu::-webkit-scrollbar-thumb {
+
+.tree-menu::-webkit-scrollbar-thumb {
   background: var(--scroll-bar-color);
 }
-tree-menu tree-label {
+
+.tree-menu .tree-label {
   opacity: 0.7;
   font-size: 0.7rem;
   font-weight: bold;
   padding: var(--item-padding);
   text-transform: uppercase;
 }
-tree-menu tree-item {
+
+.tree-menu .tree-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: var(--item-padding);
   cursor: pointer;
   -webkit-user-select: none;
@@ -41,30 +53,37 @@ tree-menu tree-item {
           user-select: none;
   position: relative;
 }
-tree-menu tree-item .material-icons {
+
+.tree-menu .tree-item .material-icons {
   margin-right: 10px;
   font-size: 20px;
   opacity: 0.2;
 }
-tree-menu tree-item:hover {
+
+.tree-menu .tree-item:hover {
   color: var(--color-black-hover);
   background-color: var(--item-background-color-hover);
 }
-tree-menu tree-item:hover .material-icons {
+
+.tree-menu .tree-item:hover .material-icons {
   opacity: 1;
 }
-tree-menu tree-item.active {
+
+.tree-menu .tree-item.active {
   color: var(--color-active);
 }
-tree-menu tree-item.active .material-icons {
+
+.tree-menu .tree-item.active .material-icons {
   opacity: 1;
 }
-tree-menu tree-group {
-  display: block;
-}
-tree-menu tree-group > tree-group-title {
+
+.tree-menu .tree-group > .tree-group-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: var(--item-padding);
   cursor: pointer;
   -webkit-user-select: none;
@@ -73,87 +92,116 @@ tree-menu tree-group > tree-group-title {
           user-select: none;
   position: relative;
 }
-tree-menu tree-group > tree-group-title .material-icons {
+
+.tree-menu .tree-group > .tree-group-title .material-icons {
   margin-right: 10px;
   font-size: 20px;
   opacity: 0.2;
 }
-tree-menu tree-group > tree-group-title:hover {
+
+.tree-menu .tree-group > .tree-group-title:hover {
   color: var(--color-black-hover);
   background-color: var(--item-background-color-hover);
 }
-tree-menu tree-group > tree-group-title:hover .material-icons {
+
+.tree-menu .tree-group > .tree-group-title:hover .material-icons {
   opacity: 1;
 }
-tree-menu tree-group > tree-group-title.active {
+
+.tree-menu .tree-group > .tree-group-title.active {
   color: var(--color-active);
 }
-tree-menu tree-group > tree-group-title.active .material-icons {
+
+.tree-menu .tree-group > .tree-group-title.active .material-icons {
   opacity: 1;
 }
-tree-menu tree-group > tree-group-title::after {
-  font-family: "Material Icons";
-  content: "";
+
+.tree-menu .tree-group > .tree-group-title::after {
+  font-family: 'Material Icons';
+  content: '\e313';
   display: inline-block;
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
-tree-menu tree-group > tree-group-children {
-  display: block;
+
+.tree-menu .tree-group > .tree-group-children {
   max-height: 0;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  -webkit-transition: max-height 0.25s ease-out;
+  transition: max-height 0.25s ease-out;
 }
-tree-menu tree-group.expand > tree-group-title {
+
+.tree-menu .tree-group.expand > .tree-group-title {
   color: var(--color-active);
 }
-tree-menu tree-group.expand > tree-group-title .material-icons {
+
+.tree-menu .tree-group.expand > .tree-group-title .material-icons {
   opacity: 1;
 }
-tree-menu tree-group.expand > tree-group-title::after {
-  transform: translateY(-50%) rotate(180deg);
+
+.tree-menu .tree-group.expand > .tree-group-title::after {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
 }
-tree-menu tree-group.expand > tree-group-children {
-  max-height: 1000px;
-  transform: scaleY(1);
+
+.tree-menu .tree-group.expand > .tree-group-children {
+  max-height: 300px;
+  -webkit-transition: max-height 0.35s ease-in;
+  transition: max-height 0.35s ease-in;
 }
-tree-menu > tree-item {
+
+.tree-menu > .tree-item {
   padding-left: 12px;
 }
-tree-menu > tree-group > tree-group-title {
+
+.tree-menu > .tree-group > .tree-group-title {
   padding-left: 12px;
 }
-tree-menu > tree-group > tree-group-children > tree-item {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-item {
   padding-left: 40px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-title {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-title {
   padding-left: 40px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-item {
   padding-left: 60px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-title {
   padding-left: 60px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-item {
   padding-left: 80px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-title {
   padding-left: 80px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-item {
   padding-left: 100px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-title {
   padding-left: 100px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-item {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-item {
   padding-left: 120px;
 }
-tree-menu > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-children > tree-group > tree-group-title {
+
+.tree-menu > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-children > .tree-group > .tree-group-title {
   padding-left: 120px;
-}/*# sourceMappingURL=styles.css.map */
+}
+/*# sourceMappingURL=styles.css.map */
