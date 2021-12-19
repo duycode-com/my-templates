@@ -1,18 +1,15 @@
-.tree-menu {
-  --tree-menu-width: 260px;
-  --font-size: 16px;
-  --color-active: #007bff;
-  --color-black: #111;
-  --color-black-hover: #000;
-  --item-padding: 10px 0;
-  --item-background-color-hover: #ebebeb;
-  --scroll-bar-color: rgb(52, 58, 64, 0.2);
-  color: var(--color-black);
-  font-size: var(--font-size);
-  font-family: 'Segoe UI';
-  width: var(--tree-menu-width);
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.sidebar {
+  --width: 260px;
+  --width-collapse: 65px;
+  width: var(--width);
   height: 100vh;
-  overflow-y: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,30 +19,137 @@
           flex-direction: column;
 }
 
+.sidebar .top-aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 56px;
+  padding: 10px;
+}
+
+.sidebar .top-aside .logo img {
+  max-width: 90%;
+  -webkit-filter: invert(0.8);
+          filter: invert(0.8);
+}
+
+.sidebar .top-aside #toggle-collapse {
+  width: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.sidebar.collapse:not(:hover) {
+  width: var(--width-collapse);
+}
+
+.sidebar.collapse:not(:hover) .top-aside .logo {
+  display: none;
+}
+
+.sidebar.collapse:not(:hover) .top-aside #toggle-collapse {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.sidebar.collapse:not(:hover) .top-aside #toggle-collapse img {
+  fill: red;
+}
+
+.sidebar.collapse:not(:hover) .tree-menu {
+  width: var(--width-collapse);
+}
+
+.sidebar.collapse:not(:hover) .tree-menu > .tree-label {
+  font-size: 0;
+  padding: 10px 10px;
+}
+
+.sidebar.collapse:not(:hover) .tree-menu > .tree-label::after {
+  display: block;
+  text-indent: 0;
+  font-family: 'Material Icons';
+  content: '\e5d3';
+  font-size: 24px;
+  line-height: 1;
+}
+
+.sidebar.collapse:not(:hover) .tree-menu > .tree-item {
+  font-size: 0;
+}
+
+.sidebar.collapse:not(:hover) .tree-menu > .tree-group {
+  font-size: 0;
+}
+
+.sidebar.collapse:not(:hover) .tree-menu > .tree-group .tree-group-children {
+  display: none;
+}
+
+.tree-menu {
+  --font-size: 16px;
+  --color-active: #007bff;
+  --color-black: #111;
+  --color-black-hover: #000;
+  --item-height: 44px;
+  --item-background-color-hover: #ebebeb;
+  --item-background-color-active: #f3f6f9;
+  --scroll-bar-color-track: white;
+  --scroll-bar-color-thumb: rgb(52, 58, 64, 0.1);
+  width: 100%;
+  color: var(--color-black);
+  font-size: var(--font-size);
+  font-family: 'Segoe UI';
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
 .tree-menu::-webkit-scrollbar {
   width: 5px;
 }
 
+.tree-menu::-webkit-scrollbar-track {
+  background: var(--scroll-bar-color-track);
+}
+
 .tree-menu::-webkit-scrollbar-thumb {
-  background: var(--scroll-bar-color);
+  background: var(--scroll-bar-color-thumb);
 }
 
 .tree-menu .tree-label {
-  opacity: 0.7;
-  font-size: 0.7rem;
-  font-weight: bold;
-  padding: var(--item-padding);
-  text-transform: uppercase;
-}
-
-.tree-menu .tree-item {
+  height: var(--item-height);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: var(--item-padding);
+  opacity: 0.7;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tree-menu .tree-item {
+  height: var(--item-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -55,7 +159,7 @@
 }
 
 .tree-menu .tree-item .material-icons {
-  margin-right: 10px;
+  margin-right: 12px;
   font-size: 20px;
   opacity: 0.2;
 }
@@ -71,6 +175,7 @@
 
 .tree-menu .tree-item.active {
   color: var(--color-active);
+  background-color: var(--item-background-color-active);
 }
 
 .tree-menu .tree-item.active .material-icons {
@@ -78,13 +183,13 @@
 }
 
 .tree-menu .tree-group > .tree-group-title {
+  height: var(--item-height);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: var(--item-padding);
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -94,7 +199,7 @@
 }
 
 .tree-menu .tree-group > .tree-group-title .material-icons {
-  margin-right: 10px;
+  margin-right: 12px;
   font-size: 20px;
   opacity: 0.2;
 }
@@ -110,6 +215,7 @@
 
 .tree-menu .tree-group > .tree-group-title.active {
   color: var(--color-active);
+  background-color: var(--item-background-color-active);
 }
 
 .tree-menu .tree-group > .tree-group-title.active .material-icons {
@@ -125,17 +231,21 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  -webkit-transition: -webkit-transform 0.2s;
-  transition: -webkit-transform 0.2s;
-  transition: transform 0.2s;
-  transition: transform 0.2s, -webkit-transform 0.2s;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
 }
 
 .tree-menu .tree-group > .tree-group-children {
   max-height: 0;
   overflow: hidden;
-  -webkit-transition: max-height 0.25s ease-out;
-  transition: max-height 0.25s ease-out;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .tree-menu .tree-group.expand > .tree-group-title {
@@ -152,9 +262,8 @@
 }
 
 .tree-menu .tree-group.expand > .tree-group-children {
-  max-height: 300px;
-  -webkit-transition: max-height 0.35s ease-in;
-  transition: max-height 0.35s ease-in;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
 }
 
 .tree-menu > .tree-item {
