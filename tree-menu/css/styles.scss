@@ -3,17 +3,20 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-.sidebar {
-	--width: 260px;
-	--width-collapse: 65px;
+#wrapper {
+	display: flex;
+	#main {
+		flex: 1;
+	}
+}
 
-	width: var(--width);
+.sidebar {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	.top-aside {
 		display: flex;
-		width: 100%;
+		width: 260px;
 		height: 56px;
 		padding: 10px;
 		.logo {
@@ -29,42 +32,15 @@
 			align-items: center;
 			cursor: pointer;
 		}
-	}
-	&.collapse:not(:hover) {
-		width: var(--width-collapse);
-		.top-aside {
+		&.collapse {
+			width: 65px;
 			.logo {
 				display: none;
 			}
 			#toggle-collapse {
 				transform: rotate(180deg);
-                img {
-
-                    fill: red;
-                }
-			}
-		}
-		.tree-menu {
-			width: var(--width-collapse);
-			& > .tree-label {
-				font-size: 0;
-				padding: 10px 10px;
-				&::after {
-					display: block;
-					text-indent: 0;
-					font-family: 'Material Icons';
-					content: '\e5d3';
-					font-size: 24px;
-					line-height: 1;
-				}
-			}
-			& > .tree-item {
-				font-size: 0;
-			}
-			& > .tree-group {
-				font-size: 0;
-				.tree-group-children {
-					display: none;
+				img {
+					fill: red;
 				}
 			}
 		}
@@ -72,6 +48,8 @@
 }
 
 .tree-menu {
+	--width: 260px;
+	--width-collapse: 65px;
 	--font-size: 16px;
 	--color-active: #007bff;
 	--color-black: #111;
@@ -82,13 +60,15 @@
 	--scroll-bar-color-track: white;
 	--scroll-bar-color-thumb: rgb(52, 58, 64, 0.1);
 
-	width: 100%;
+	width: var(--width);
 	color: var(--color-black);
 	font-size: var(--font-size);
 	font-family: 'Segoe UI';
 	flex: 1;
 	overflow-y: auto;
+	overflow-x: hidden;
 	padding: 0 10px;
+	border-right: 1px solid #ddd;
 
 	&::-webkit-scrollbar {
 		width: 5px;
@@ -107,6 +87,8 @@
 		cursor: pointer;
 		user-select: none;
 		position: relative;
+		white-space: nowrap;
+		overflow: hidden;
 		.material-icons {
 			margin-right: 12px;
 			font-size: 20px;
@@ -136,6 +118,8 @@
 		font-size: 0.7rem;
 		font-weight: bold;
 		text-transform: uppercase;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 	.tree-item {
 		@include tree-item-style;
@@ -231,6 +215,32 @@
 						}
 					}
 				}
+			}
+		}
+	}
+
+	&.collapse:not(:hover) {
+		width: var(--width-collapse);
+		& > .tree-label {
+			font-size: 0;
+			padding: 10px 10px;
+			&::after {
+				display: block;
+				text-indent: 0;
+				font-family: 'Material Icons';
+				content: '\e5d3';
+				font-size: 24px;
+				line-height: 1;
+			}
+		}
+		& > .tree-group {
+			.tree-group-title {
+				&::after {
+					display: none;
+				}
+			}
+			.tree-group-children {
+				display: none;
 			}
 		}
 	}

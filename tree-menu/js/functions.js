@@ -2,6 +2,7 @@ class TreeMenuElement {
 	constructor(element) {
 		this.treeMenu = element
 		this.listenEvent()
+		this.basicHeight = 44
 	}
 	listenEvent() {
 		const that = this
@@ -18,7 +19,6 @@ class TreeMenuElement {
 			}
 		})
 	}
-
 	clearAllActiveItem() {
 		this.treeMenu.querySelectorAll('.tree-item.active').forEach(item => {
 			item.classList.remove('active')
@@ -60,10 +60,11 @@ class TreeMenuElement {
 			let numberMaxHeight = 0
 			for (let i = 0; i < groupChildren.children.length; i++) {
 				if (groupChildren.children[i].classList.contains('expand')) {
-					numberMaxHeight += groupChildren.children[i].querySelector('.tree-group-title').offsetHeight
+					numberMaxHeight +=
+						groupChildren.children[i].querySelector('.tree-group-title').offsetHeight || this.basicHeight
 					numberMaxHeight += setMaxHeight(groupChildren.children[i])
 				} else {
-					numberMaxHeight += groupChildren.children[i].offsetHeight
+					numberMaxHeight += groupChildren.children[i].offsetHeight || this.basicHeight
 				}
 			}
 			groupChildren.style.maxHeight = numberMaxHeight + 'px'
@@ -95,9 +96,34 @@ class TreeMenuElement {
 }
 
 window.addEventListener('load', () => {
-	new TreeMenuElement(document.getElementById('tree-example'))
+	const treeExample = new TreeMenuElement(document.getElementById('tree-example'))
 	document.getElementById('toggle-collapse').onclick = () => {
 		document.getElementById('tree-example').classList.toggle('collapse')
-		document.getElementById('sidebar-example').classList.toggle('collapse')
+		document.getElementById('top-aside').classList.toggle('collapse')
+	}
+
+	document.getElementById('btn-test-click').onclick = () => {
+		const exampleData = [
+			'level-1.1.1.1.2',
+			'sign-in',
+			'sign-up',
+			'google-map',
+			'level-1.1.2',
+			'toasts',
+			'buttons',
+			'chat',
+			'inbox',
+			'documents',
+			'column-search',
+			'charts',
+			'editor',
+			'validation',
+			'input-basic',
+			'input-groups',
+			'layouts',
+		]
+		const random = Math.floor(Math.random() * exampleData.length)
+		console.log(exampleData[random])
+		treeExample.actionItem(exampleData[random])
 	}
 })
