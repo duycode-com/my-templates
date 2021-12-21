@@ -1,46 +1,3 @@
-const dataTabsExample = [
-	{
-		key: 'i1',
-		label: 'item 1',
-		content: '<div>This is item 1</div>',
-	},
-	{
-		key: 'i2',
-		label: 'item 2',
-		content: '<div>This is item 2</div>',
-	},
-	{
-		key: 'i3',
-		label: 'item 3',
-		content: '<div>This is item 3</div>',
-	},
-	{
-		key: 'i4',
-		label: 'item 4',
-		content: '<div>This is item 4</div>',
-	},
-	{
-		key: 'i5',
-		label: 'item 5',
-		content: '<div>This is item 5</div>',
-	},
-	{
-		key: 'i6',
-		label: 'item 6',
-		content: '<div>This is item 6</div>',
-	},
-	{
-		key: 'i7',
-		label: 'item 7',
-		content: '<div>This is item 7</div>',
-	},
-	{
-		key: 'i8',
-		label: 'item 8',
-		content: '<div>This is item 8</div>',
-	},
-]
-
 class TabsElement {
 	constructor(tabsElement, data) {
 		this.tabsElement = tabsElement
@@ -53,6 +10,7 @@ class TabsElement {
 	}
 
 	initial(data) {
+		if (!data) return
 		const that = this
 		data.forEach(item => that.add(item))
 	}
@@ -63,10 +21,7 @@ class TabsElement {
 				const key = e.target.closest('.tabs-title-item').dataset.tabsKey
 				that.active(key)
 			}
-			if (
-				e.target.classList.contains('tabs-title-item-close') ||
-				e.target.closest('.tabs-title-item-close')
-			) {
+			if (e.target.classList.contains('tabs-title-item-close') || e.target.closest('.tabs-title-item-close')) {
 				const key = e.target.closest('.tabs-title-item').dataset.tabsKey
 				that.remove(key)
 			}
@@ -126,14 +81,13 @@ class TabsElement {
 			this.tabsTitleContent.style.left = '0px'
 		}
 		if (indexPage != 0) {
-			this.tabsTitleContent.style.left =
-				wrapperWidth - this.tabsCreatePage()[indexPage].onWidth + 'px'
+			this.tabsTitleContent.style.left = wrapperWidth - this.tabsCreatePage()[indexPage].onWidth + 'px'
 		}
 	}
 	add({ key, label, content }) {
 		this.tabsTitleContent.innerHTML += `<div class="tabs-title-item" data-tabs-key="${key}">
                 <div class="tabs-title-item-label">${label}</div>
-                <div class="tabs-title-item-close"><i class="fas fa-times"></i></div>
+                <div class="tabs-title-item-close"><span class="material-icons">close</span></div>
             </div>`
 		this.tabsPanel.innerHTML += `<div class="tabs-panel-item" data-tabs-key="${key}">${content}</div>`
 	}
@@ -146,19 +100,11 @@ class TabsElement {
 		for (let i = 0; i < listPanelItem.length; i++) {
 			listPanelItem[i].style.display = 'none'
 		}
-		this.tabsElement
-			.querySelector(`div.tabs-title-item[data-tabs-key='${key}']`)
-			.classList.add('active')
-		this.tabsElement.querySelector(
-			`div.tabs-panel-item[data-tabs-key='${key}']`,
-		).style.display = ''
+		this.tabsElement.querySelector(`div.tabs-title-item[data-tabs-key='${key}']`).classList.add('active')
+		this.tabsElement.querySelector(`div.tabs-panel-item[data-tabs-key='${key}']`).style.display = ''
 	}
 	remove(key) {
 		this.tabsElement.querySelector(`.tabs-panel-item[data-tabs-key='${key}']`).remove()
 		this.tabsElement.querySelector(`.tabs-title-item[data-tabs-key='${key}']`).remove()
 	}
 }
-
-window.addEventListener('load', () => {
-	new TabsElement(document.getElementById('tabs-content'), dataTabsExample)
-})

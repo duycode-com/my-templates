@@ -12,7 +12,50 @@ const treeMenuData = [
 	},
 ]
 
-let siderbar, treeMenu, toggleSidebar, toggleSidebarMobile
+const dataTabsExample = [
+	{
+		key: 'i1',
+		label: 'item 1',
+		content: '<div>This is item 1</div>',
+	},
+	{
+		key: 'i2',
+		label: 'item 2',
+		content: '<div>This is item 2</div>',
+	},
+	{
+		key: 'i3',
+		label: 'item 3',
+		content: '<div>This is item 3</div>',
+	},
+	{
+		key: 'i4',
+		label: 'item 4',
+		content: '<div>This is item 4</div>',
+	},
+	{
+		key: 'i5',
+		label: 'item 5',
+		content: '<div>This is item 5</div>',
+	},
+	{
+		key: 'i6',
+		label: 'item 6',
+		content: '<div>This is item 6</div>',
+	},
+	{
+		key: 'i7',
+		label: 'item 7',
+		content: '<div>This is item 7</div>',
+	},
+	{
+		key: 'i8',
+		label: 'item 8',
+		content: '<div>This is item 8</div>',
+	},
+]
+
+let siderbar, treeMenu, toggleSidebar, toggleSidebarMobile, tabsContent
 
 const setClassSidebar = windowWidth => {
 	if (windowWidth <= 768) {
@@ -35,6 +78,7 @@ window.addEventListener('load', () => {
 	toggleSidebarMobile = document.getElementById('toggle-sidebar-mobile')
 
 	const treeExample = new TreeMenuElement(treeMenu)
+	tabsContent = new TabsElement(document.getElementById('tabs-content'), dataTabsExample)
 
 	setClassSidebar(window.innerWidth)
 
@@ -74,8 +118,16 @@ window.addEventListener('load', () => {
 window.addEventListener('resize', () => {
 	setClassSidebar(window.innerWidth)
 })
+
 window.addEventListener('click', e => {
-	if (!e.target.closest('.sidebar') ) {
+	if (!e.target.closest('.sidebar')) {
 		siderbar.classList.remove('preview')
+	}
+	if (e.target.closest('.tree-item')) {
+		const treeItem = e.target.closest('.tree-item')
+		const key = treeItem.dataset.treeItem
+		const label = treeItem.innerText
+		const content = 'This is ' + label
+		tabsContent.add({ key, label, content })
 	}
 })
