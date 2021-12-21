@@ -1,0 +1,40 @@
+:root {
+	--sidebar-width: 260px;
+	--sidebar-collapse-width: 65px;
+	--header-height: 50px;
+	--footer-height: 50px;
+	--color-primary: #0598dd;
+	--color-error: #dc3545;
+	--border-color-basic: #e0e0e0;
+}
+
+@import './reset';
+@import './components/layouts';
+@import './components/tabs';
+
+#app {
+	display: flex;
+}
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	.sidebar {
+		height: 100vh;
+	}
+	.header {
+		height: var(--header-height);
+		border-left: 1px solid var(--border-color-basic);
+	}
+	.content {
+		flex: 1;
+		background-color: #f8f9fa;
+	}
+	.footer {
+		height: var(--footer-height);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

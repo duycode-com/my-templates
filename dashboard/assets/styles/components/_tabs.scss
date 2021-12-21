@@ -1,0 +1,75 @@
+.tabs {
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid var(--border-color-basic);
+	.tabs-title {
+		width: 100%;
+		display: flex;
+		border-bottom: 1px solid var(--border-color-basic);
+		@mixin tabs-arrow {
+            padding: 0 4px;
+            display: flex;
+            align-items: center;
+			cursor: pointer;
+			&:hover {
+				color: var(--color-primary);
+			}
+		}
+		.tabs-prev {
+			border-right: 1px solid var(--border-color-basic);
+			@include tabs-arrow;
+		}
+		.tabs-title-wrapper {
+			flex: 1;
+			position: relative;
+			overflow: hidden;
+			.tabs-title-contents {
+				top: 0;
+				left: 0;
+				position: absolute;
+				display: flex;
+				flex-wrap: nowrap;
+				transition: 0.5s;
+				.tabs-title-item {
+					padding: 15px 16px;
+					cursor: pointer;
+					border-right: 1px solid var(--border-color-basic);
+					display: flex;
+					align-items: center;
+					&.active {
+						color: var(--color-primary);
+					}
+					.tabs-title-item-label {
+						white-space: nowrap;
+						&:hover {
+							color: var(--color-primary);
+						}
+					}
+					.tabs-title-item-close {
+						padding-left: 16px;
+						font-size: 0.8rem;
+						&:hover {
+							color: var(--color-error);
+						}
+					}
+				}
+			}
+		}
+		.tabs-next {
+			border-left: 1px solid var(--border-color-basic);
+			@include tabs-arrow;
+		}
+		.tabs-close-all {
+			border-left: 1px solid var(--border-color-basic);
+			padding: 15px 16px;
+			cursor: pointer;
+			&:hover {
+				color: var(--color-primary);
+			}
+		}
+	}
+	.tabs-panel {
+		height: 300px;
+		padding: 0.5rem 1rem;
+	}
+}
