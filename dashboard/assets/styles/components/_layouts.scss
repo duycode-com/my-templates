@@ -51,6 +51,7 @@
 		--label-font-size: 11px;
 		--scroll-bar-color-track: white;
 		--scroll-bar-color-thumb: rgb(52, 58, 64, 0.1);
+		--scroll-bar-width: 5px;
 
 		width: var(--width);
 		height: calc(100vh - var(--header-height));
@@ -58,11 +59,16 @@
 		color: var(--color-black);
 		font-size: var(--font-size);
 		flex: 1;
-		overflow-y: auto;
+		overflow-y: hidden;
 		overflow-x: hidden;
+		padding-right: var(--scroll-bar-width);
 
+		&:hover {
+			overflow-y: auto;
+			padding-right: 0;
+		}
 		&::-webkit-scrollbar {
-			width: 5px;
+			width: var(--scroll-bar-width);
 		}
 		&::-webkit-scrollbar-track {
 			background: var(--scroll-bar-color-track);
@@ -342,6 +348,7 @@
 		}
 		.material-icons {
 			cursor: pointer;
+			user-select: none;
 			font-size: 24px;
 			color: var(--color-primary);
 		}

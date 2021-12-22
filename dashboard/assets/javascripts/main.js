@@ -1,4 +1,4 @@
-const treeMenuData = [
+const treeMenuDataExample = [
 	{ type: 'tree-item', label: 'Dashboard', data: 'dashboard', icon: 'layers' },
 	{ type: 'tree-label', label: 'Pages' },
 	{
@@ -12,50 +12,7 @@ const treeMenuData = [
 	},
 ]
 
-const dataTabsExample = [
-	{
-		key: 'i1',
-		label: 'item 1',
-		content: '<div>This is item 1</div>',
-	},
-	{
-		key: 'i2',
-		label: 'item 2',
-		content: '<div>This is item 2</div>',
-	},
-	{
-		key: 'i3',
-		label: 'item 3',
-		content: '<div>This is item 3</div>',
-	},
-	{
-		key: 'i4',
-		label: 'item 4',
-		content: '<div>This is item 4</div>',
-	},
-	{
-		key: 'i5',
-		label: 'item 5',
-		content: '<div>This is item 5</div>',
-	},
-	{
-		key: 'i6',
-		label: 'item 6',
-		content: '<div>This is item 6</div>',
-	},
-	{
-		key: 'i7',
-		label: 'item 7',
-		content: '<div>This is item 7</div>',
-	},
-	{
-		key: 'i8',
-		label: 'item 8',
-		content: '<div>This is item 8</div>',
-	},
-]
-
-let siderbar, treeMenu, toggleSidebar, toggleSidebarMobile, tabsContent
+let siderbar, treeExample, toggleSidebar, toggleSidebarMobile, tabsContent, treeMenu
 
 const setClassSidebar = windowWidth => {
 	if (windowWidth <= 768) {
@@ -73,12 +30,12 @@ const setClassSidebar = windowWidth => {
 
 window.addEventListener('load', () => {
 	siderbar = document.getElementById('sidebar-example')
-	treeMenu = document.getElementById('tree-example')
+	treeExample = document.getElementById('tree-example')
 	toggleSidebar = document.getElementById('toggle-sidebar')
 	toggleSidebarMobile = document.getElementById('toggle-sidebar-mobile')
 
-	const treeExample = new TreeMenuElement(treeMenu)
-	tabsContent = new TabsElement(document.getElementById('tabs-content'), dataTabsExample)
+	treeMenu = new TreeMenuElement(treeExample)
+	tabsContent = new TabsElement(document.getElementById('tabs-content'))
 
 	setClassSidebar(window.innerWidth)
 
@@ -87,31 +44,6 @@ window.addEventListener('load', () => {
 	}
 	toggleSidebarMobile.onclick = () => {
 		siderbar.classList.toggle('preview')
-	}
-
-	document.getElementById('btn-test-click').onclick = () => {
-		const exampleData = [
-			'level-1.1.1.1.2',
-			'sign-in',
-			'sign-up',
-			'google-map',
-			'level-1.1.2',
-			'toasts',
-			'buttons',
-			'chat',
-			'inbox',
-			'documents',
-			'column-search',
-			'charts',
-			'editor',
-			'validation',
-			'input-basic',
-			'input-groups',
-			'layouts',
-		]
-		const random = Math.floor(Math.random() * exampleData.length)
-		console.log(exampleData[random])
-		treeExample.actionItem(exampleData[random])
 	}
 })
 
@@ -125,9 +57,15 @@ window.addEventListener('click', e => {
 	}
 	if (e.target.closest('.tree-item')) {
 		const treeItem = e.target.closest('.tree-item')
-		const key = treeItem.dataset.treeItem
-		const label = treeItem.innerText
-		const content = 'This is ' + label
-		tabsContent.add({ key, label, content })
+		tabsContent.add({
+			key: treeItem.dataset.treeItem,
+			label: treeItem.innerText,
+			content: 'This is ' + treeItem.innerText,
+		})
+	}
+	if (e.target.closest('.tabs-title-item')) {
+		const tabsItem = e.target.closest('.tabs-title-item')
+		const key = tabsItem.dataset.tabsKey
+		treeMenu.actionItem(key)
 	}
 })
