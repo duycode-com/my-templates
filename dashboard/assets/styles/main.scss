@@ -11,7 +11,8 @@
 }
 
 @import './reset';
-@import './components/layouts';
+@import './components/header';
+@import './components/sidebar';
 @import './components/tabs';
 
 #app {
@@ -27,11 +28,10 @@
 	}
 	.header {
 		height: var(--header-height);
-		border-left: 1px solid var(--border-color-basic);
 	}
 	.content {
 		flex: 1;
-		background-color: #f8f9fa;
+		background-color: #F0F2F5;
 	}
 	.footer {
 		height: var(--footer-height);
@@ -41,7 +41,6 @@
 	}
 }
 .material-icons {
-	cursor: pointer;
 	user-select: none;
 	font-size: 24px;
 }

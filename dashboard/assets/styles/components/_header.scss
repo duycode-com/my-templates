@@ -1,0 +1,38 @@
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+
+	#toggle-sidebar-mobile {
+		opacity: 0.7;
+	}
+	.navigator-action {
+		display: flex;
+		align-items: center;
+		& > * {
+			margin: 0 15px;
+		}
+		.message {
+			display: flex;
+			align-items: center;
+			position: relative;
+			.baget {
+				position: absolute;
+				top: -4px;
+				right: -6px;
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+				font-size: 11px;
+				font-weight: bold;
+				color: white;
+				text-align: center;
+				background-color: var(--color-error);
+			}
+		}
+		.material-icons {
+			color: var(--color-primary);
+		}
+	}
+}

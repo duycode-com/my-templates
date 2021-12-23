@@ -26,6 +26,64 @@ html body {
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
 }
 
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.header #toggle-sidebar-mobile {
+  opacity: 0.7;
+}
+
+.header .navigator-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .navigator-action > * {
+  margin: 0 15px;
+}
+
+.header .navigator-action .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.header .navigator-action .message .baget {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background-color: var(--color-error);
+}
+
+.header .navigator-action .material-icons {
+  color: var(--color-primary);
+}
+
 .sidebar {
   width: var(--sidebar-width);
 }
@@ -426,68 +484,9 @@ html body {
   left: 0;
 }
 
-.header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 10px 20px;
-}
-
-.header #toggle-sidebar-mobile {
-  opacity: 0.7;
-}
-
-.header .navigator-action {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.header .navigator-action > * {
-  margin: 0 15px;
-}
-
-.header .navigator-action .message {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-}
-
-.header .navigator-action .message .baget {
-  position: absolute;
-  top: -4px;
-  right: -6px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  font-size: 11px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  background-color: var(--color-error);
-}
-
-.header .navigator-action .material-icons {
-  color: var(--color-primary);
-}
-
 .tabs {
   width: 100%;
-  background-color: #fff;
-  border: 1px solid var(--border-color-basic);
+  border-top: 1px solid var(--border-color-basic);
 }
 
 .tabs .tabs-title {
@@ -501,6 +500,7 @@ html body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-color: #fff;
 }
 
 .tabs .tabs-title .tabs-prev {
@@ -515,6 +515,7 @@ html body {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .tabs .tabs-title .tabs-prev:not(.deactive):hover {
@@ -522,7 +523,7 @@ html body {
 }
 
 .tabs .tabs-title .tabs-prev.deactive {
-  opacity: 0.3;
+  opacity: 0.2;
   cursor: not-allowed;
 }
 
@@ -538,6 +539,7 @@ html body {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .tabs .tabs-title .tabs-next:not(.deactive):hover {
@@ -545,7 +547,7 @@ html body {
 }
 
 .tabs .tabs-title .tabs-next.deactive {
-  opacity: 0.3;
+  opacity: 0.2;
   cursor: not-allowed;
 }
 
@@ -684,14 +686,13 @@ html body {
 
 .main .header {
   height: var(--header-height);
-  border-left: 1px solid var(--border-color-basic);
 }
 
 .main .content {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: #f8f9fa;
+  background-color: #F0F2F5;
 }
 
 .main .footer {
@@ -708,7 +709,6 @@ html body {
 }
 
 .material-icons {
-  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

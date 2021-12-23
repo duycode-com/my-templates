@@ -1,13 +1,13 @@
 .tabs {
 	width: 100%;
-	background-color: #fff;
-	border: 1px solid var(--border-color-basic);
+	border-top: 1px solid var(--border-color-basic);
 	.tabs-title {
 		width: 100%;
 		height: 44px;
 		display: flex;
 		border-bottom: 1px solid var(--border-color-basic);
 		user-select: none;
+		background-color: #fff;
 
 		@mixin tabs-arrow {
 			padding: 0 2px;
@@ -15,11 +15,12 @@
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+            opacity: 0.8;
 			&:not(.deactive):hover {
 				color: var(--color-active);
 			}
 			&.deactive {
-				opacity: 0.3;
+				opacity: 0.2;
 				cursor: not-allowed;
 			}
 		}
