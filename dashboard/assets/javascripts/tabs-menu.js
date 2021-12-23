@@ -154,6 +154,7 @@ class TabsElement {
 			if (!elementActive) elementActive = this.tabsElement.querySelectorAll('.tabs-title-item')[indexElement - 1]
 			if (!elementActive) {
 				this.listenCloseAll()
+                return
 			}
 			currentKey = elementActive.dataset.tabsKey
 		}
