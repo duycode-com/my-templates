@@ -24,6 +24,8 @@ window.addEventListener('load', () => {
 
 	treeMenu = new TreeMenuElement(treeExample)
 	tabsContent = new TabsElement(document.getElementById('tabs-content'))
+	tabsContent.listenActive = key => treeMenu.actionItem(key)
+	tabsContent.listenCloseAll = () => treeMenu.clearAll()
 
 	setClassSidebar(window.innerWidth)
 })
@@ -49,10 +51,5 @@ window.addEventListener('click', e => {
 			label: treeItem.innerText,
 			content: 'This is ' + treeItem.innerText,
 		})
-	}
-	if (e.target.closest('.tabs-title-item')) {
-		const tabsItem = e.target.closest('.tabs-title-item')
-		const key = tabsItem.dataset.tabsKey
-		treeMenu.actionItem(key)
 	}
 })

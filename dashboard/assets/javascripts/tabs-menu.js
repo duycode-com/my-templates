@@ -30,6 +30,7 @@ class TabsElement {
 				if (confirm('Are you sure you want to close all tabs?')) {
 					that.tabsTitleContent.innerHTML = ''
 					that.tabsPanel.innerHTML = ''
+					that.listenCloseAll()
 				}
 			}
 			if (e.target.classList.contains('tabs-prev') || e.target.closest('.tabs-prev')) {
@@ -99,18 +100,19 @@ class TabsElement {
 		}
 	}
 	setCurrentPage(key) {
-		const listTabsTitle = this.tabsElement.querySelectorAll('.tabs-title-item')
-		let indexElement = 0
-		for (let i = 0; i < listTabsTitle.length; i++) {
-			if (listTabsTitle[i].dataset.tabsKey === key) {
-				indexElement = i
-				break
-			}
-		}
+		const indexElement = this.findIndex(key)
 		this.currentPage = this.arrayPages.findIndex(item => {
 			return item.pageStart <= indexElement && item.pageEnd >= indexElement
 		})
 		this.movePositionPage()
+	}
+	findIndex(key) {
+		const listTabsTitle = this.tabsElement.querySelectorAll('.tabs-title-item')
+		for (let i = 0; i < listTabsTitle.length; i++) {
+			if (listTabsTitle[i].dataset.tabsKey === key) {
+				return i
+			}
+		}
 	}
 	add({ key, label, content }) {
 		if (!this.contains(key)) {
@@ -119,7 +121,6 @@ class TabsElement {
                 <div class="tabs-title-item-close"><span class="material-icons">close</span></div>
             </div>`
 			this.tabsPanel.innerHTML += `<div class="tabs-panel-item" data-tabs-key="${key}" style="display:none">${content}</div>`
-			this.createArrayPage()
 		}
 		this.active(key)
 	}
@@ -135,13 +136,39 @@ class TabsElement {
 		this.tabsElement.querySelector(`div.tabs-title-item[data-tabs-key='${key}']`).classList.add('active')
 		this.tabsElement.querySelector(`div.tabs-panel-item[data-tabs-key='${key}']`).style.display = ''
 
+		this.createArrayPage()
 		this.setCurrentPage(key)
+		this.listenActive(key)
 	}
 	remove(key) {
-		this.tabsElement.querySelector(`.tabs-title-item[data-tabs-key='${key}']`).remove()
-		this.tabsElement.querySelector(`.tabs-panel-item[data-tabs-key='${key}']`).remove()
+		let currentKey = this.tabsElement.querySelector(`.tabs-title-item.active`).dataset.tabsKey
+		const tabsTitle = this.tabsElement.querySelector(`.tabs-title-item[data-tabs-key='${key}']`)
+		const tabsPanel = this.tabsElement.querySelector(`.tabs-panel-item[data-tabs-key='${key}']`)
+
+		const indexElement = this.findIndex(key)
+		tabsTitle.remove()
+		tabsPanel.remove()
+
+		if (currentKey === key) {
+			let elementActive = this.tabsElement.querySelectorAll('.tabs-title-item')[indexElement]
+			if (!elementActive) elementActive = this.tabsElement.querySelectorAll('.tabs-title-item')[indexElement - 1]
+			if (!elementActive) {
+				this.listenCloseAll()
+			}
+			currentKey = elementActive.dataset.tabsKey
+		}
+
+		this.active(currentKey)
 	}
 	contains(key) {
 		return !!this.tabsElement.querySelector(`.tabs-title-item[data-tabs-key='${key}']`)
+	}
+
+	listenActive(key) {
+		//callback active tabs in here
+		console.log(key)
+	}
+	listenCloseAll() {
+		console.log('close all')
 	}
 }

@@ -64,9 +64,12 @@ class TreeMenuElement {
 			item.querySelector('.tree-group-children').style.maxHeight = null
 		})
 	}
-	activeItem(treeItem) {
+	clearAll() {
 		this.clearAllActiveItem()
 		this.clearAllExpandGroup()
+	}
+	activeItem(treeItem) {
+		this.clearAll()
 		treeItem.classList.add('active')
 	}
 	activeGroup(treeGroup) {
@@ -111,8 +114,8 @@ class TreeMenuElement {
 		}
 	}
 
-	actionItem(data) {
-		const treeItem = this.treeMenu.querySelector(`.tree-item[data-tree-item='${data}']`)
+	actionItem(key) {
+		const treeItem = this.treeMenu.querySelector(`.tree-item[data-tree-item='${key}']`)
 		const treeGroup = treeItem.closest('.tree-group')
 		this.activeItem(treeItem)
 		if (treeGroup) {
