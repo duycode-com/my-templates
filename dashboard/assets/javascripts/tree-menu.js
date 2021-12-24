@@ -15,7 +15,7 @@ class TreeMenuElement {
 					iconContent = `<span class="material-icons">${item.icon}</span>`
 				}
 				if (item.type === 'tree-item') {
-					content += `<div class="tree-item" data-tree-item="${item.data}">
+					content += `<div class="tree-item" data-tree-key="${item.data}">
                                     ${iconContent} 
                                     ${item.label}
                                 </div>`
@@ -43,7 +43,7 @@ class TreeMenuElement {
 		this.treeMenu.addEventListener('click', e => {
 			if (e.target.closest('.tree-item')) {
 				const target = e.target.closest('.tree-item')
-				const data = target.dataset.treeItem
+				const data = target.dataset.treeKey
 				that.actionItem(data)
 			}
 			if (e.target.closest('.tree-group-title')) {
@@ -115,7 +115,7 @@ class TreeMenuElement {
 	}
 
 	actionItem(key) {
-		const treeItem = this.treeMenu.querySelector(`.tree-item[data-tree-item='${key}']`)
+		const treeItem = this.treeMenu.querySelector(`.tree-item[data-tree-key='${key}']`)
 		const treeGroup = treeItem.closest('.tree-group')
 		this.activeItem(treeItem)
 		if (treeGroup) {

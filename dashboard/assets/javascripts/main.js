@@ -47,7 +47,7 @@ window.addEventListener('click', e => {
 	if (e.target.closest('.tree-item')) {
 		const treeItem = e.target.closest('.tree-item')
 		tabsContent.add({
-			key: treeItem.dataset.treeItem,
+			key: treeItem.dataset.treeKey,
 			label: treeItem.innerText,
 			content: 'This is ' + treeItem.innerText,
 		})
